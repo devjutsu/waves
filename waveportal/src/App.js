@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { ethers } from "ethers";
 import "./App.css";
+//import abi from "../../artifacts/contracts/Waver.sol/Waver.json";
+import abi from "./utils/Waver.json";
 
 const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
+
+  const contractAddress = "0x273dFDdD9a3Ae06e2b9B9AD0E6258B64337763cB";
+  const contractABI = abi.abi;
 
   const checkIfWalletIsConnected = async () => {
     try {
@@ -81,7 +87,7 @@ const App = () => {
         devjutsu here &#128122;
         </div>
 
-        <button className="waveButton" onClick={null}>
+        <button className="waveButton" onClick={wave}>
           Wave at Me
         </button>
 
