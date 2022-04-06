@@ -29,9 +29,6 @@ const App = () => {
     }
   }
 
-  /**
-  * Implement your connectWallet method here
-  */
   const connectWallet = async () => {
     try {
       const { ethereum } = window;
@@ -69,9 +66,6 @@ const App = () => {
           Wave at Me
         </button>
 
-        {/*
-        * If there is no currentAccount render this button
-        */}
         {!currentAccount && (
           <button className="waveButton" onClick={connectWallet}>
             Connect Wallet
