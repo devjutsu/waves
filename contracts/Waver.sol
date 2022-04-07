@@ -16,7 +16,7 @@ contract Waver {
     Wave[] waves;
     uint256 totalWaves;
 
-    constructor() {
+    constructor() payable {
         console.log("wave constructor");
     }
 
