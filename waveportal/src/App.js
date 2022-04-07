@@ -7,7 +7,7 @@ import abi from "./utils/Waver.json";
 const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
 
-  const contractAddress = "0x273dFDdD9a3Ae06e2b9B9AD0E6258B64337763cB";
+  const contractAddress = "0xe09a6c0d857458ff5978269c98e76c8DDE8c691b";
   const contractABI = abi.abi;
 
   const checkIfWalletIsConnected = async () => {
