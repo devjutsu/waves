@@ -7,9 +7,15 @@ import abi from "./utils/Waver.json";
 const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
   const [allWaves, setAllWaves] = useState([]);
+  const [waveMsg, setWave] = useState("");
 
   const contractAddress = "0xe09a6c0d857458ff5978269c98e76c8DDE8c691b";
   const contractABI = abi.abi;
+
+  const setWaveMsg = (e) => {
+    setWave(e.target.value);
+    console.log("upd: " + waveMsg);
+  }
 
   const checkIfWalletIsConnected = async () => {
     try {
@@ -70,7 +76,7 @@ const App = () => {
         /*
         * Execute the actual wave from your smart contract
         */
-        const waveTxn = await wavePortalContract.wave("ping");
+        const waveTxn = await wavePortalContract.wave(waveMsg);
         console.log("Mining...", waveTxn.hash);
 
         await waveTxn.wait();
@@ -78,6 +84,7 @@ const App = () => {
 
         count = await wavePortalContract.getTotalWaves();
         console.log("Retrieved total wave count...", count.toNumber());
+        await getAllWaves();
       } else {
         console.log("Ethereum object doesn't exist!");
       }
@@ -135,7 +142,8 @@ const App = () => {
         </div>
         <p>&nbsp;</p>
 
-        <input type="text" placeholder="input text to send" style={{ textAlign: "center"}}></input>
+        <input type="text" placeholder="wave msg to send" 
+        style={{ textAlign: "center"}} value={waveMsg} onChange={setWaveMsg}></input>
         <button className="waveButton" onClick={wave}>
           Wave at Me
         </button>
