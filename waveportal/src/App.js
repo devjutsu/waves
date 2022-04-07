@@ -120,6 +120,7 @@ const App = () => {
 
   useEffect(() => {
     checkIfWalletIsConnected();
+    getAllWaves();
   }, [])
 
   return (
@@ -132,7 +133,9 @@ const App = () => {
         <div className="bio">
           devjutsu here <span role="img" aria-label="tengu">&#128122;</span>
         </div>
+        <p>&nbsp;</p>
 
+        <input type="text" placeholder="input text to send" style={{ textAlign: "center"}}></input>
         <button className="waveButton" onClick={wave}>
           Wave at Me
         </button>
