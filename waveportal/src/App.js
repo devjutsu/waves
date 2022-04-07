@@ -53,7 +53,7 @@ const App = () => {
     }
   }
 
-  
+
   const wave = async () => {
     try {
       const { ethereum } = window;
@@ -93,11 +93,11 @@ const App = () => {
     <div className="mainContainer">
       <div className="dataContainer">
         <div className="header">
-        Greetings, people of the World!
+          Greetings, people of the World!
         </div>
 
         <div className="bio">
-        devjutsu here <span role="img" aria-label="tengu">&#128122;</span>
+          devjutsu here <span role="img" aria-label="tengu">&#128122;</span>
         </div>
 
         <button className="waveButton" onClick={wave}>
