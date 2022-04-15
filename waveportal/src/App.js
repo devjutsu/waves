@@ -4,12 +4,12 @@ import "./App.css";
 //import abi from "../../artifacts/contracts/Waver.sol/Waver.json";
 import abi from "./utils/Waver.json";
 
-const App = () => {
+export default () => {
   const [currentAccount, setCurrentAccount] = useState("");
   const [allWaves, setAllWaves] = useState([]);
   const [waveMsg, setWave] = useState("");
 
-  const contractAddress = "0xBdf2E8F348232daB7E17CfC0651e9E45fd35f8b1";
+  const contractAddress = "0x7BEB2D0048B64796bFB9c1771E156c87BAfB5447";
   const contractABI = abi.abi;
 
   const setWaveMsg = (e) => {
@@ -167,5 +167,3 @@ const App = () => {
     </div>
   );
 }
-
-export default App

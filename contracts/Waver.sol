@@ -4,12 +4,8 @@ pragma solidity ^0.8.0;
 
 import "hardhat/console.sol";
 
-contract WavePortal {
+contract Waver {
     uint256 totalWaves;
-
-    /*
-     * We will be using this below to help generate a random number
-     */
     uint256 private seed;
 
     event NewWave(address indexed from, uint256 timestamp, string message);
@@ -24,9 +20,6 @@ contract WavePortal {
 
     constructor() payable {
         console.log("We have been constructed!");
-        /*
-         * Set the initial seed
-         */
         seed = (block.timestamp + block.difficulty) % 100;
     }
 
@@ -36,9 +29,6 @@ contract WavePortal {
 
         waves.push(Wave(msg.sender, _message, block.timestamp));
 
-        /*
-         * Generate a new seed for the next user that sends a wave
-         */
         seed = (block.difficulty + block.timestamp + seed) % 100;
 
         console.log("Random # generated: %d", seed);
@@ -46,9 +36,6 @@ contract WavePortal {
         if (seed <= 50) {
             console.log("%s won!", msg.sender);
 
-            /*
-             * The same code we had before to send the prize.
-             */
             uint256 prizeAmount = 0.0001 ether;
             require(
                 prizeAmount <= address(this).balance,
