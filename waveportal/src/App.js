@@ -8,7 +8,7 @@ export default () => {
   const [allWaves, setAllWaves] = useState([]);
   const [waveMsg, setWave] = useState("");
 
-  const contractAddress = "0x53af58D7076067701721c30730c311993982923D";
+  const contractAddress = process.env.REACT_APP_CONTRACT_ADDRESS;
   const contractABI = abi.abi;
 
   const setWaveMsg = (e) => {
