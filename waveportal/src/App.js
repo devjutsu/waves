@@ -78,9 +78,6 @@ export default () => {
         await waveTxn.wait();
         console.log("Mined -- ", waveTxn.hash);
 
-        // count = await wavePortalContract.getTotalWaves();
-        // console.log("Retrieved total wave count...", count.toNumber());
-        // await getAllWaves();
       } else {
         console.log("Ethereum object doesn't exist!");
       }
@@ -97,11 +94,9 @@ export default () => {
         const signer = provider.getSigner();
         const wavePortalContract = new ethers.Contract(contractAddress, contractABI, signer);
 
-        /* Call the getAllWaves method from your Smart Contract */
         const waves = await wavePortalContract.getAllWaves();
         console.log('got waves: ', waves.length);
 
-        /* We only need address, timestamp, and message in our UI so let's pick those out */
         let wavesCleaned = [];
         waves.forEach(wave => {
           wavesCleaned.push({
@@ -111,7 +106,6 @@ export default () => {
           });
         });
 
-        /* Store our data in React State */
         setAllWaves(wavesCleaned);
       } else {
         console.log("Ethereum object doesn't exist!")
