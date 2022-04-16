@@ -17,6 +17,7 @@ contract Waver {
     }
 
     Wave[] waves;
+    mapping(address => uint256) public lastWavedAt;
 
     constructor() payable {
         console.log("We have been constructed!");
@@ -24,6 +25,12 @@ contract Waver {
     }
 
     function wave(string memory _message) public {
+        require(
+            lastWavedAt[msg.sender] + 30 seconds < block.timestamp,
+            "Must wait 30 seconds"
+        );
+        lastWavedAt[msg.sender] = block.timestamp;
+
         totalWaves += 1;
         console.log("%s has waved!", msg.sender);
 

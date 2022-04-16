@@ -76,7 +76,7 @@ export default () => {
         /*
         * Execute the actual wave from your smart contract
         */
-        const waveTxn = await wavePortalContract.wave(waveMsg);
+        const waveTxn = await wavePortalContract.wave(waveMsg, { gasLimit: 300000 });
         console.log("Mining...", waveTxn.hash);
 
         await waveTxn.wait();
