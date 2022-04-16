@@ -26,8 +26,8 @@ contract Waver {
 
     function wave(string memory _message) public {
         require(
-            lastWavedAt[msg.sender] + 30 seconds < block.timestamp,
-            "Must wait 30 seconds"
+            lastWavedAt[msg.sender] + 3 seconds < block.timestamp,
+            "Must wait 3 seconds"
         );
         lastWavedAt[msg.sender] = block.timestamp;
 
