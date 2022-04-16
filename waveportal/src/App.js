@@ -13,7 +13,6 @@ export default () => {
 
   const setWaveMsg = (e) => {
     setWave(e.target.value);
-    console.log("upd: " + waveMsg);
   }
 
   const checkIfWalletIsConnected = async () => {
@@ -115,6 +114,12 @@ export default () => {
     }
   }
 
+  const handleKeypress = async(e) => {
+    if (e.key === "Enter") {
+      await wave();
+    }
+  }
+
   useEffect(() => {
     let wavePortalContract;
 
@@ -133,14 +138,14 @@ export default () => {
     if (window.ethereum) {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
-  
+
       wavePortalContract = new ethers.Contract(contractAddress, contractABI, signer);
       wavePortalContract.on("NewWave", onNewWave);
     }
 
     checkIfWalletIsConnected();
     getAllWaves();
-    
+
     return () => {
       if (wavePortalContract) {
         wavePortalContract.off("NewWave", onNewWave);
@@ -161,8 +166,11 @@ export default () => {
         </div>
         <p>&nbsp;</p>
 
-        <input type="text" placeholder="wave msg to send" 
-        style={{ textAlign: "center"}} value={waveMsg} onChange={setWaveMsg}></input>
+        <input type="text" placeholder="wave msg to send"
+          style={{ textAlign: "center" }}
+          value={waveMsg}
+          onChange={setWaveMsg}
+          onKeyPress={handleKeypress}></input>
         <button className="waveButton" onClick={wave}>
           Wave at Me
         </button>
